@@ -1,12 +1,17 @@
 package ru.muzafarov.binaryTree;
 
+/**
+ * Класс, представляющий узел бинарного дерева.
+ */
 class Node {
     private Integer value;
     private Node parent;
     private Node leftChild;
     private Node rightChild;
 
-    // Конструктор без аргументов
+    /**
+     * Создает пустой узел.
+     */
     public Node() {
         this.value = null;
         this.parent = null;
@@ -14,7 +19,11 @@ class Node {
         this.rightChild = null;
     }
 
-    // Метод для добавления значения
+    /**
+     * Добавляет значение в узел или его поддеревья.
+     *
+     * @param newValue Значение для добавления.
+     */
     public void addValue(int newValue) {
         if (this.value == null) {
             this.value = newValue; // Устанавливаем значение, если оно не задано
@@ -35,6 +44,12 @@ class Node {
         }
     }
 
+    /**
+     * Удаляет значение из узла или его поддеревьев.
+     *
+     * @param valueToRemove Значение для удаления.
+     * @return true, если значение было удалено, иначе false.
+     */
     public boolean removeValue(int valueToRemove) {
         if (this.value == null) {
             return false; // Значение не найдено
@@ -73,7 +88,11 @@ class Node {
         }
     }
 
-    // Метод для замены узла в родителе
+    /**
+     * Заменяет текущий узел в родителе на новый узел.
+     *
+     * @param newValue Новый узел для замены.
+     */
     private void replaceNodeInParent(Node newValue) {
         if (this.parent != null) {
             if (this.parent.leftChild == this) {
@@ -87,8 +106,12 @@ class Node {
         }
     }
 
-
-    // Метод для проверки существования значения
+    /**
+     * Проверяет, содержит ли узел или его поддеревья указанное значение.
+     *
+     * @param valueToCheck Значение для проверки.
+     * @return true, если значение найдено, иначе false.
+     */
     public boolean containsValue(int valueToCheck) {
         if (this.value == null) {
             return false; // Узел пустой
@@ -102,7 +125,12 @@ class Node {
         }
     }
 
-    // Метод для строкового представления узла
+    /**
+     * Возвращает строковое представление узла и его поддеревьев (обход in-order).
+     *
+     * @return Строковое представление узла.
+     */
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if (this.leftChild != null) {
